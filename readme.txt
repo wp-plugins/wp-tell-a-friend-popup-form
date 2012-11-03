@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-f
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Tags: popup, contact, popup form, tell a friend
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 3.0
+Tested up to: 3.4.2
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,9 @@ Short code option for pages and posts
 = 3.0 =
 New demo link
 
+= 4.0 =
+Tested 3.4.2 
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -88,3 +91,6 @@ Short code option for pages and posts
 
 = 3.0 =
 New demo link
+
+= 4.0 =
+Tested 3.4.2 
