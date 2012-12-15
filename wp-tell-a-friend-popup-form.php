@@ -4,7 +4,7 @@
 Plugin Name: wp tell a friend popup form
 Description: This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page.
 Author: Gopi.R
-Version: 4.0
+Version: 4.1
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Donate link: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
