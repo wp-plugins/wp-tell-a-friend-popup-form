@@ -4,7 +4,7 @@
 Plugin Name: wp tell a friend popup form
 Description: This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page.
 Author: Gopi.R
-Version: 4.1
+Version: 5.0
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Donate link: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
@@ -96,8 +96,12 @@ function TellAFriend_deactivation()
 
 function TellAFriend_admin()
 {
-	echo '<div class="wrap">';
-	echo '<h2>Popup contact form</h2>';
+	?>
+	<div class="wrap">
+	<div class="form-wrap">
+    <div id="icon-plugins" class="icon32 icon32-posts-post"></div>
+	<h2>Tell a friend popup form</h2>
+	<?php
 	global $wpdb, $wp_version;
 	$TellAFriend_Title = get_option('TellAFriend_Title');
 	$TellAFriend_Fromemail = get_option('TellAFriend_Fromemail');
@@ -124,58 +128,60 @@ function TellAFriend_admin()
 		update_option('TellAFriend_Caption', $TellAFriend_Caption );
 		update_option('TellAFriend_Adminmail_Content', $TellAFriend_Adminmail_Content );
 		update_option('TellAFriend_Usermail_Content', $TellAFriend_Usermail_Content );
+		
+		?>
+		<div class="updated fade">
+			<p><strong>Details successfully updated.</strong></p>
+		</div>
+		<?php
 	}
-	
+	echo '<h3>Plugin setting</h3>';
 	echo '<form name="form_gCF" method="post" action="">';
 	
-	echo '<p>Title:<br><input  style="width: 350px;" type="text" value="';
-	echo $TellAFriend_Title . '" name="TellAFriend_Title" id="TellAFriend_Title" /></p>';
+	echo '<label for="tag-title">Title</label><input  style="width: 350px;" type="text" value="';
+	echo $TellAFriend_Title . '" name="TellAFriend_Title" id="TellAFriend_Title" /><p>Enter your popup box title.</p>';
 	
-	echo '<p>From Email:<br><input  style="width: 350px;" type="text" value="';
-	echo $TellAFriend_Fromemail . '" name="TellAFriend_Fromemail" id="TellAFriend_Fromemail" /></p>';
+	echo '<label for="tag-title">From email:</label><input  style="width: 350px;" type="text" value="';
+	echo $TellAFriend_Fromemail . '" name="TellAFriend_Fromemail" id="TellAFriend_Fromemail" /><p>Enter From email address for your mail.</p>';
 	
-	echo '<p>Admin Email:<br><input style="width: 350px;" type="text" value="';
+	echo '<label for="tag-title">Admin email:</label><input style="width: 350px;" type="text" value="';
 	echo $TellAFriend_On_MyEmail . '" name="TellAFriend_On_MyEmail" maxlength="200" id="TellAFriend_On_MyEmail" /><br />';
-	echo '<span style="font-size:0.8em;">Enter your email address to receive  Tell A Friend email copy</span></p>';
+	echo '<p>Enter admin email address to receive  Tell A Friend Mail copy.</p>';
 	
-	echo '<p>Email Subject:<br><input style="width: 350px;" type="text" value="';
+	echo '<label for="tag-title">Email subject:</label><input style="width: 350px;" type="text" value="';
 	echo $TellAFriend_On_Subject . '" name="TellAFriend_On_Subject" maxlength="200" id="TellAFriend_On_Subject" /><br />';
-	echo '<span style="font-size:0.8em;">Enter mail subject</span></p>';
+	echo '<p>Enter mail subject.</p>';
 	
-	echo '<p>Link Button/Text:<br><input style="width: 700px;" type="text" value="';
+	echo '<label for="tag-title">Link button/text:</label><input style="width: 800px;" type="text" value="';
 	echo $TellAFriend_Caption . '" name="TellAFriend_Caption" id="TellAFriend_Caption" /><br />';
-	echo '<span style="font-size:0.8em;">This box is to add the contact us Image or text, Entered value will display in the front end.</span></p>';
+	echo '<p>This box is to add the contact us Image or text, Entered value will display in the front end.</p>';
 	
 	?>
     <table width="640" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td>Admin mail content:</td>
-        <td>User mail content:</td>
+        <td><label for="tag-title">Admin mail content:</label></td>
+        <td><label for="tag-title">User mail content:</label></td>
       </tr>
       <tr>
-        <td><textarea name="TellAFriend_Adminmail_Content" rows="10" id="j_adminmail_content" style="width: 450px;"><?php echo $TellAFriend_Adminmail_Content ?></textarea></td>
-        <td><textarea name="TellAFriend_Usermail_Content" rows="10" id="j_usermail_content" style="width: 450px;"><?php echo $TellAFriend_Usermail_Content ?></textarea></td>
+        <td><textarea name="TellAFriend_Adminmail_Content" rows="6" id="j_adminmail_content" style="width: 450px;"><?php echo $TellAFriend_Adminmail_Content ?></textarea></td>
+        <td><textarea name="TellAFriend_Usermail_Content" rows="6" id="j_usermail_content" style="width: 450px;"><?php echo $TellAFriend_Usermail_Content ?></textarea></td>
       </tr>
-      <tr><td colspan="2">Keywords: ##USERNAME## , ##LINK## , ##FRIENDEMAIL## , ##MESSAGE##</td></tr>
+      <tr><td colspan="2"><p>Keywords: ##USERNAME## , ##LINK## , ##FRIENDEMAIL## , ##MESSAGE##</p></td></tr>
     </table>
-    <?php
-	
-	echo '<br /><input type="submit" id="TellAFriend_submit" name="TellAFriend_submit" lang="publish" class="button-primary" value="Update Setting" value="1" />';
-	
-	$help = "'http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/'";
-	echo '&nbsp;&nbsp;&nbsp;<input name="Help" lang="publish" class="button-primary" onclick="window.open('.$help.');" value="Help" type="button" />';
-	
-	echo '</form>';
-	
-	echo '<br /><strong>Plugin configuration</strong><br />';
-	echo '<ol>';
-	echo '<li>Drag and drop the widget</li>';
-	echo '<li>Paste the php code to your desired template location</li>';
-	echo '<li>Short code for pages and posts</li>';
-	echo '</ol>';
-	echo 'Note: Check official website for more info <a href="http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/" target="_blank">click here</a>';
-
-	echo '</div>';
+	<div style="height:8px;"></div>
+	<input type="submit" id="TellAFriend_submit" name="TellAFriend_submit" lang="publish" class="button add-new-h2" value="Update Setting" value="1" />
+	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/');" value="Help" type="button" />
+	</form>
+	</div>
+	<h3>Plugin configuration option</h3>
+	<ol>
+		<li>Drag and drop the plugin widget to your sidebar.</li>
+		<li>Add plugin in the posts or pages using short code.</li>
+		<li>Add directly in to the theme using PHP code.</li>
+	</ol>
+	<p class="description">Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/">click here</a></p>
+	</div>
+	<?php
 }
 
 
