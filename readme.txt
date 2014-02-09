@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-
 Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Tags: popup, contact, popup form, tell a friend
-Requires at least: 3.2
-Tested up to: 3.6
-Stable tag: 5.0
+Requires at least: 3.4
+Tested up to: 3.8
+Stable tag: 5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,8 +62,9 @@ Plug-in features
 
 == Screenshots ==
 
-1. http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
-2. http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
+1. Front Screen. http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
+
+2. Admin Screen. http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 
 == Changelog ==
 
@@ -87,6 +88,11 @@ Tested up to 3.5
 Tested up to 3.6
 Added few security features.
 
+= 5.1 =
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (tell-a-friend.po) available in the languages folder.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -108,3 +114,8 @@ Tested up to 3.5
 = 5.0 =
 Tested up to 3.6
 Added few security features.
+
+= 5.1 =
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (tell-a-friend.po) available in the languages folder.

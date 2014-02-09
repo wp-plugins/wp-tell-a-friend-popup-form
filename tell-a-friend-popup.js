@@ -1,6 +1,6 @@
 /**
  *     wp tell a friend popup form
- *     Copyright (C) 2010 - 2013 www.gopiplus.com
+ *     Copyright (C) 2010 - 2014 www.gopiplus.com
  *     http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
  * 
  *     This program is free software: you can redistribute it and/or modify

@@ -1,10 +1,9 @@
 <?php
-
 /*
 Plugin Name: wp tell a friend popup form
 Description: This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page.
 Author: Gopi.R
-Version: 5.0
+Version: 5.1
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Donate link: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
@@ -20,20 +19,20 @@ function TellAFriend()
 	<div style="display: none;" id="TellAFriend_BoxContainer">
 	  <div id="TellAFriend_BoxContainerHeader">
 		<div id="TellAFriend_BoxTitle"><?php echo get_option('TellAFriend_Title'); ?></div>
-		<div id="TellAFriend_BoxClose"><a href="javascript:TellAFriend_HideForm('TellAFriend_BoxContainer','TellAFriend_BoxContainerFooter');">Close</a></div>
+		<div id="TellAFriend_BoxClose"><a href="javascript:TellAFriend_HideForm('TellAFriend_BoxContainer','TellAFriend_BoxContainerFooter');"><?php _e('Close', 'tell-a-friend'); ?></a></div>
 	  </div>
 	  <div id="TellAFriend_BoxContainerBody">
 		<form action="#" name="TellAFriend_Form" id="TellAFriend_Form">
 		  <div id="TellAFriend_BoxAlert"> <span id="TellAFriend_alertmessage"></span> </div>
-		  <div id="TellAFriend_BoxLabel"> Your Name </div>
+		  <div id="TellAFriend_BoxLabel"> <?php _e('Your Name', 'tell-a-friend'); ?> </div>
 		  <div id="TellAFriend_BoxLabel">
 			<input name="TellAFriend_name" class="TellAFriend_TextBox" type="text" id="TellAFriend_name" maxlength="120">
 		  </div>
-		  <div id="TellAFriend_BoxLabel"> Friend Email </div>
+		  <div id="TellAFriend_BoxLabel"> <?php _e('Friend Email', 'tell-a-friend'); ?> </div>
 		  <div id="TellAFriend_BoxLabel">
 			<input name="TellAFriend_email" class="TellAFriend_TextBox" type="text" id="TellAFriend_email" maxlength="120">
 		  </div>
-		  <div id="TellAFriend_BoxLabel"> Enter Message To Friend </div>
+		  <div id="TellAFriend_BoxLabel"> <?php _e('Enter Message To Friend', 'tell-a-friend'); ?> </div>
 		  <div id="TellAFriend_BoxLabel">
 			<textarea name="TellAFriend_message" class="TellAFriend_TextArea" rows="3" id="TellAFriend_message"></textarea>
 		  </div>
@@ -58,7 +57,6 @@ function TellAFriend_install()
 	add_option('TellAFriend_Caption', "<img src='".get_option('siteurl')."/wp-content/plugins/wp-tell-a-friend-popup-form/tell-a-friend.jpg' />");
 	add_option('TellAFriend_Adminmail_Content', "Hi Admin, Someone (##USERNAME##) used our form to send link (##LINK##) to friend ##FRIENDEMAIL## with the message <br /> ##MESSAGE## ");
 	add_option('TellAFriend_Usermail_Content', "Hi, Your friend ##USERNAME## has sent you a link to web site. <br /><br /> ##LINK## <br /><br /> ##MESSAGE##");
-
 }
 
 function TellAFriend_widget($args) 
@@ -71,21 +69,21 @@ function TellAFriend_widget($args)
 	
 function TellAFriend_control() 
 {
-	echo 'To change the setting goto Popup contact form link on Setting menu.';
-	echo '<br><a href="options-general.php?page=wp-tell-a-friend-popup-form/wp-tell-a-friend-popup-form.php">';
-	echo 'click here</a></p>';
+	echo '<p>';
+	_e('Check official website for more information', 'tell-a-friend');
+	?> <a target="_blank" href="http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/"><?php _e('click here', 'tell-a-friend'); ?></a></p><?php
 }
 
 function TellAFriend_widget_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('Tell A Friend', 'Tell A Friend', 'TellAFriend_widget');
+		wp_register_sidebar_widget( __('Tell A Friend', 'tell-a-friend'), __('Tell A Friend', 'tell-a-friend'), 'TellAFriend_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('Tell A Friend', array('Tell A Friend', 'widgets'), 'TellAFriend_control');
+		wp_register_widget_control( __('Tell A Friend', 'tell-a-friend'), array( __('Tell A Friend', 'tell-a-friend'), 'widgets'), 'TellAFriend_control');
 	} 
 }
 
@@ -100,7 +98,7 @@ function TellAFriend_admin()
 	<div class="wrap">
 	<div class="form-wrap">
     <div id="icon-plugins" class="icon32 icon32-posts-post"></div>
-	<h2>Tell a friend popup form</h2>
+	<h2><?php _e('Tell a friend popup form', 'tell-a-friend'); ?></h2>
 	<?php
 	global $wpdb, $wp_version;
 	$TellAFriend_Title = get_option('TellAFriend_Title');
@@ -111,7 +109,7 @@ function TellAFriend_admin()
 	$TellAFriend_Adminmail_Content = get_option('TellAFriend_Adminmail_Content');
 	$TellAFriend_Usermail_Content = get_option('TellAFriend_Usermail_Content');
 	
-	if (@$_POST['TellAFriend_submit']) 
+	if (isset($_POST['TellAFriend_submit'])) 
 	{
 		$TellAFriend_Title = stripslashes($_POST['TellAFriend_Title']);
 		$TellAFriend_Fromemail = stripslashes($_POST['TellAFriend_Fromemail']);
@@ -131,36 +129,36 @@ function TellAFriend_admin()
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.', 'tell-a-friend'); ?></strong></p>
 		</div>
 		<?php
 	}
-	echo '<h3>Plugin setting</h3>';
+	echo '<h3>'.__('Plugin setting', 'tell-a-friend').'</h3>';
 	echo '<form name="form_gCF" method="post" action="">';
 	
-	echo '<label for="tag-title">Title</label><input  style="width: 350px;" type="text" value="';
-	echo $TellAFriend_Title . '" name="TellAFriend_Title" id="TellAFriend_Title" /><p>Enter your popup box title.</p>';
+	echo '<label for="tag-title">'.__('Title', 'tell-a-friend').'</label><input  style="width: 350px;" type="text" value="';
+	echo $TellAFriend_Title . '" name="TellAFriend_Title" id="TellAFriend_Title" /><p>'.__('Enter your popup box title.', 'tell-a-friend').'</p>';
 	
-	echo '<label for="tag-title">From email:</label><input  style="width: 350px;" type="text" value="';
-	echo $TellAFriend_Fromemail . '" name="TellAFriend_Fromemail" id="TellAFriend_Fromemail" /><p>Enter From email address for your mail.</p>';
+	echo '<label for="tag-title">'.__('From email:', 'tell-a-friend').'</label><input  style="width: 350px;" type="text" value="';
+	echo $TellAFriend_Fromemail . '" name="TellAFriend_Fromemail" id="TellAFriend_Fromemail" /><p>'.__('Enter From email address for your mail.', 'tell-a-friend').'</p>';
 	
-	echo '<label for="tag-title">Admin email:</label><input style="width: 350px;" type="text" value="';
+	echo '<label for="tag-title">'.__('Admin email:', 'tell-a-friend').'</label><input style="width: 350px;" type="text" value="';
 	echo $TellAFriend_On_MyEmail . '" name="TellAFriend_On_MyEmail" maxlength="200" id="TellAFriend_On_MyEmail" /><br />';
-	echo '<p>Enter admin email address to receive  Tell A Friend Mail copy.</p>';
+	echo '<p>'.__('Enter admin email address to receive  Tell A Friend Mail copy.', 'tell-a-friend').'</p>';
 	
-	echo '<label for="tag-title">Email subject:</label><input style="width: 350px;" type="text" value="';
+	echo '<label for="tag-title">'.__('Email subject:', 'tell-a-friend').'</label><input style="width: 350px;" type="text" value="';
 	echo $TellAFriend_On_Subject . '" name="TellAFriend_On_Subject" maxlength="200" id="TellAFriend_On_Subject" /><br />';
-	echo '<p>Enter mail subject.</p>';
+	echo '<p>'.__('Enter mail subject.', 'tell-a-friend').'</p>';
 	
-	echo '<label for="tag-title">Link button/text:</label><input style="width: 800px;" type="text" value="';
+	echo '<label for="tag-title">'.__('Link button/text:', 'tell-a-friend').'</label><input style="width: 800px;" type="text" value="';
 	echo $TellAFriend_Caption . '" name="TellAFriend_Caption" id="TellAFriend_Caption" /><br />';
-	echo '<p>This box is to add the contact us Image or text, Entered value will display in the front end.</p>';
+	echo '<p>'.__('This box is to add the contact us Image or text, Entered value will display in the front end.', 'tell-a-friend').'</p>';
 	
 	?>
     <table width="640" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td><label for="tag-title">Admin mail content:</label></td>
-        <td><label for="tag-title">User mail content:</label></td>
+        <td><label for="tag-title"><?php _e('Admin mail content:', 'tell-a-friend'); ?></label></td>
+        <td><label for="tag-title"><?php _e('User mail content:', 'tell-a-friend'); ?></label></td>
       </tr>
       <tr>
         <td><textarea name="TellAFriend_Adminmail_Content" rows="6" id="j_adminmail_content" style="width: 450px;"><?php echo $TellAFriend_Adminmail_Content ?></textarea></td>
@@ -169,17 +167,20 @@ function TellAFriend_admin()
       <tr><td colspan="2"><p>Keywords: ##USERNAME## , ##LINK## , ##FRIENDEMAIL## , ##MESSAGE##</p></td></tr>
     </table>
 	<div style="height:8px;"></div>
-	<input type="submit" id="TellAFriend_submit" name="TellAFriend_submit" lang="publish" class="button add-new-h2" value="Update Setting" value="1" />
-	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/');" value="Help" type="button" />
+	<input type="submit" id="TellAFriend_submit" name="TellAFriend_submit" lang="publish" class="button add-new-h2" value="<?php _e('Update Setting', 'tell-a-friend'); ?>" />
+	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/');" value="<?php _e('Help', 'tell-a-friend'); ?>" type="button" />
 	</form>
 	</div>
-	<h3>Plugin configuration option</h3>
+	<h3><?php _e('Plugin configuration option', 'tell-a-friend'); ?></h3>
 	<ol>
-		<li>Drag and drop the plugin widget to your sidebar.</li>
-		<li>Add plugin in the posts or pages using short code.</li>
-		<li>Add directly in to the theme using PHP code.</li>
+		<li><?php _e('Drag and drop the plugin widget to your sidebar.', 'tell-a-friend'); ?></li>
+		<li><?php _e('Add plugin in the posts or pages using short code.', 'tell-a-friend'); ?></li>
+		<li><?php _e('Add directly in to the theme using PHP code.', 'tell-a-friend'); ?></li>
 	</ol>
-	<p class="description">Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/">click here</a></p>
+	<p class="description">
+		<?php _e('Check official website for more information', 'tell-a-friend'); ?> 
+		<a target="_blank" href="http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/"><?php _e('click here', 'tell-a-friend'); ?></a>
+	</p>
 	</div>
 	<?php
 }
@@ -187,7 +188,7 @@ function TellAFriend_admin()
 
 function TellAFriend_add_to_menu() 
 {
-	add_options_page('Tell a friend', 'Tell a friend', 'manage_options', __FILE__, 'TellAFriend_admin' );
+	add_options_page(__('Tell A friend', 'tell-a-friend'), __('Tell A friend', 'tell-a-friend'), 'manage_options', __FILE__, 'TellAFriend_admin' );
 }
 
 if (is_admin()) 
@@ -227,20 +228,20 @@ function TellAFriend_shortcode( $atts )
 	$html .= '<div style="display: none;" id="TellAFriend_BoxContainer">';
 	  $html .= '<div id="TellAFriend_BoxContainerHeader">';
 		$html .= '<div id="TellAFriend_BoxTitle">'.$PopupContact_title.'</div>';
-		$html .= '<div id="TellAFriend_BoxClose"><a href="'.$close .'">Close</a></div>';
+		$html .= '<div id="TellAFriend_BoxClose"><a href="'.$close .'">'.__('Close', 'tell-a-friend').'</a></div>';
 	  $html .= '</div>';
 	  $html .= '<div id="TellAFriend_BoxContainerBody">';
 		$html .= '<form action="#" name="TellAFriend_Form" id="TellAFriend_Form">';
 		  $html .= '<div id="TellAFriend_BoxAlert"> <span id="TellAFriend_alertmessage"></span> </div>';
-		  $html .= '<div id="TellAFriend_BoxLabel_Page"> Your Name </div>';
+		  $html .= '<div id="TellAFriend_BoxLabel_Page"> '.__('Your Name', 'tell-a-friend').' </div>';
 		  $html .= '<div id="TellAFriend_BoxLabel_Page">';
 			$html .= '<input name="TellAFriend_name" class="TellAFriend_TextBox" type="text" id="TellAFriend_name" maxlength="120">';
 		  $html .= '</div>';
-		  $html .= '<div id="TellAFriend_BoxLabel_Page"> Friend Email </div>';
+		  $html .= '<div id="TellAFriend_BoxLabel_Page"> '.__('Friend Email', 'tell-a-friend').' </div>';
 		  $html .= '<div id="TellAFriend_BoxLabel_Page">';
 			$html .= '<input name="TellAFriend_email" class="TellAFriend_TextBox" type="text" id="TellAFriend_email" maxlength="120">';
 		  $html .= '</div>';
-		  $html .= '<div id="TellAFriend_BoxLabel_Page"> Enter Message To Friend </div>';
+		  $html .= '<div id="TellAFriend_BoxLabel_Page"> '.__('Enter Message To Friend', 'tell-a-friend').' </div>';
 		  $html .= '<div id="TellAFriend_BoxLabel_Page">';
 			$html .= '<textarea name="TellAFriend_message" class="TellAFriend_TextArea" rows="3" id="TellAFriend_message"></textarea>';
 		  $html .= '</div>';
@@ -255,6 +256,12 @@ function TellAFriend_shortcode( $atts )
 	return $html;
 }
 
+function TellAFriend_textdomain() 
+{
+	  load_plugin_textdomain( 'tell-a-friend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'TellAFriend_textdomain');
 add_shortcode( 'tell-a-friend', 'TellAFriend_shortcode' );
 add_action('wp_enqueue_scripts', 'TellAFriend_add_javascript_files');
 add_action("plugins_loaded", "TellAFriend_widget_init");
