@@ -60,18 +60,15 @@ if($SenderName <> "" && $ToEmail <> "")
 		{
 			@wp_mail($AdminEmail, $Subject, $Adminmail_Content, $headers);
 		}
-		//echo "Message sent successfully.";
 		_e('Message sent successfully.', 'tell-a-friend');
 	}
 	else
 	{
-		//echo "There was a problem with the request.";
 		_e('There was a problem with the request.', 'tell-a-friend');
 	}
 }
 else
 {
-	//echo "Please enter your name and email.";
 	_e('Please enter your name and email.', 'tell-a-friend');
 }
 ?>
