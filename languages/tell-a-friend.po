@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp tell a friend popup form\n"
-"POT-Creation-Date: 2014-04-18 14:48+0800\n"
-"PO-Revision-Date: 2014-04-18 14:48+0800\n"
+"POT-Creation-Date: 2014-06-25 22:09+0800\n"
+"PO-Revision-Date: 2014-06-25 22:09+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,138 +13,140 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tell-a-friend-save.php:63
-msgid "Message sent successfully."
-msgstr ""
-
-#: ../tell-a-friend-save.php:67
-msgid "There was a problem with the request."
-msgstr ""
-
-#: ../tell-a-friend-save.php:72
-msgid "Please enter your name and email."
-msgstr ""
-
 #: ../wp-tell-a-friend-popup-form.php:24
-#: ../wp-tell-a-friend-popup-form.php:233
+#: ../wp-tell-a-friend-popup-form.php:251
 msgid "Close"
 msgstr ""
 
 #: ../wp-tell-a-friend-popup-form.php:29
-#: ../wp-tell-a-friend-popup-form.php:238
+#: ../wp-tell-a-friend-popup-form.php:256
 msgid "Your Name"
 msgstr ""
 
 #: ../wp-tell-a-friend-popup-form.php:33
-#: ../wp-tell-a-friend-popup-form.php:242
+#: ../wp-tell-a-friend-popup-form.php:260
 msgid "Friend Email"
 msgstr ""
 
 #: ../wp-tell-a-friend-popup-form.php:37
-#: ../wp-tell-a-friend-popup-form.php:246
+#: ../wp-tell-a-friend-popup-form.php:264
 msgid "Enter Message To Friend"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:75
-#: ../wp-tell-a-friend-popup-form.php:183
+#: ../wp-tell-a-friend-popup-form.php:84
+#: ../wp-tell-a-friend-popup-form.php:201
 msgid "Check official website for more information"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:76
-#: ../wp-tell-a-friend-popup-form.php:184
+#: ../wp-tell-a-friend-popup-form.php:85
+#: ../wp-tell-a-friend-popup-form.php:202
 msgid "click here"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:83 ../wp-tell-a-friend-popup-form.php:88
+#: ../wp-tell-a-friend-popup-form.php:92 ../wp-tell-a-friend-popup-form.php:97
 msgid "Tell A Friend"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:103
+#: ../wp-tell-a-friend-popup-form.php:112
 msgid "Tell a friend popup form"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:134
+#: ../wp-tell-a-friend-popup-form.php:146
 msgid "Details successfully updated."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:138
+#: ../wp-tell-a-friend-popup-form.php:150
 msgid "Plugin setting"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:141
+#: ../wp-tell-a-friend-popup-form.php:153
 msgid "Title"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:142
+#: ../wp-tell-a-friend-popup-form.php:154
 msgid "Enter your popup box title."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:144
+#: ../wp-tell-a-friend-popup-form.php:156
 msgid "From email:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:145
+#: ../wp-tell-a-friend-popup-form.php:157
 msgid "Enter From email address for your mail."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:147
+#: ../wp-tell-a-friend-popup-form.php:159
 msgid "Admin email:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:149
+#: ../wp-tell-a-friend-popup-form.php:161
 msgid "Enter admin email address to receive  Tell A Friend Mail copy."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:151
+#: ../wp-tell-a-friend-popup-form.php:163
 msgid "Email subject:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:153
+#: ../wp-tell-a-friend-popup-form.php:165
 msgid "Enter mail subject."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:155
+#: ../wp-tell-a-friend-popup-form.php:167
 msgid "Link button/text:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:157
+#: ../wp-tell-a-friend-popup-form.php:169
 msgid ""
 "This box is to add the contact us Image or text, Entered value will display "
 "in the front end."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:162
+#: ../wp-tell-a-friend-popup-form.php:174
 msgid "Admin mail content:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:163
+#: ../wp-tell-a-friend-popup-form.php:175
 msgid "User mail content:"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:172
+#: ../wp-tell-a-friend-popup-form.php:184
+msgid "Security Check (Spam Stopper)"
+msgstr ""
+
+#: ../wp-tell-a-friend-popup-form.php:185
+msgid "Home URL"
+msgstr ""
+
+#: ../wp-tell-a-friend-popup-form.php:187
+msgid ""
+"This home URL is for security check. We can submit the form only on this "
+"website. "
+msgstr ""
+
+#: ../wp-tell-a-friend-popup-form.php:190
 msgid "Update Setting"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:173
+#: ../wp-tell-a-friend-popup-form.php:191
 msgid "Help"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:176
+#: ../wp-tell-a-friend-popup-form.php:194
 msgid "Plugin configuration option"
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:178
+#: ../wp-tell-a-friend-popup-form.php:196
 msgid "Drag and drop the plugin widget to your sidebar."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:179
+#: ../wp-tell-a-friend-popup-form.php:197
 msgid "Add plugin in the posts or pages using short code."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:180
+#: ../wp-tell-a-friend-popup-form.php:198
 msgid "Add directly in to the theme using PHP code."
 msgstr ""
 
-#: ../wp-tell-a-friend-popup-form.php:193
+#: ../wp-tell-a-friend-popup-form.php:211
 msgid "Tell A friend"
 msgstr ""

@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-f
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Tags: popup, contact, popup form, tell a friend
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 5.2
+Tested up to: 3.9.1
+Stable tag: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,13 +22,13 @@ Check official website for live demo [http://www.gopiplus.com/work/2012/05/21/wo
 
 This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page (Sidebar, End of the post, pages). Plug-in automatically pick the post link and send it to their friend as well as website admin (Optional) along with the entered message.
 
-Plugin configuration
+= Plugin configuration = 
 
 * Drag and drop the widget
 * Paste the php code to your desired template location
 * Short code for pages and posts
 
-Here’s the step
+= Step to follow = 
 
 * Click Tell A Friend Button.
 * It will open the form in the popup window.
@@ -36,7 +36,7 @@ Here’s the step
 * Enter the short message.
 * Click the send button.
 
-Plug-in features
+= Plug-in features = 
 
 * Open form in popup window
 * Option to send the mail copy to admin.
@@ -96,6 +96,9 @@ Plugin *.po file (tell-a-friend.po) available in the languages folder.
 = 5.2 =
 1. Tested up to 3.9
 
+= 5.3 =
+1. Captcha removed from the plugin. Instead security check has been added in Tell A Friend form submit page. With this new option Tell A Friend form accept submission only from your website domain. It simply reject the submission other then your website domain. After plugin upgrade, Please deactivate and activate the plugin once.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -125,3 +128,6 @@ Plugin *.po file (tell-a-friend.po) available in the languages folder.
 
 = 5.2 =
 1. Tested up to 3.9
+
+= 5.3 =
+1. Captcha removed from the plugin. Instead security check has been added in Tell A Friend form submit page. With this new option Tell A Friend form accept submission only from your website domain. It simply reject the submission other then your website domain. After plugin upgrade, Please deactivate and activate the plugin once.

@@ -65,20 +65,35 @@ function PopupContactContents()
   {
 	 if (http_req.status == 200) 
 	 {
-		if(http_req.responseText == "Invalid security code.")
+		result = http_req.responseText;
+		result = result.trim();
+		if(result == "invalid-email")
 		{
-			alert(http_req.responseText);
-			result = http_req.responseText;
-			document.getElementById('TellAFriend_alertmessage').innerHTML = result;
+			alert("Invalid email address.");
+			document.getElementById('TellAFriend_alertmessage').innerHTML = "Invalid email address.";   
 		}
-		else
+		else if(result == "empty-email")
 		{
-			alert(http_req.responseText);
-			result = http_req.responseText;
-			document.getElementById('TellAFriend_alertmessage').innerHTML = "";   
+			alert("Please enter email address.");
+			document.getElementById('TellAFriend_alertmessage').innerHTML = "Please enter email address.";   
+		}
+		else if(result == "there-was-problem")
+		{
+			alert("There was a problem with the request.");
+			document.getElementById('TellAFriend_alertmessage').innerHTML = "There was a problem with the request.";   
+		}
+		else if(result == "mail-sent-successfully")
+		{
+			alert("Mail sent successfully");
+			document.getElementById('TellAFriend_alertmessage').innerHTML = "Mail sent successfully";   
 			document.getElementById("TellAFriend_email").value = "";
 			document.getElementById("TellAFriend_name").value = "";
 			document.getElementById("TellAFriend_message").value = "";
+		}
+		else
+		{
+			alert("There was a problem with the request.");
+			document.getElementById('TellAFriend_alertmessage').innerHTML = "There was a problem with the request.";   
 		}
 	 } 
 	 else 
@@ -126,5 +141,5 @@ function TellAFriend_Submit(obj, url)
 						"&TellAFriend_Link=" + encodeURI( document.getElementById("TellAFriend_Link").value ) +
 							"&TellAFriend_captcha=nocaptcha";
 							
-	PopupContactPOSTRequest(url+'tell-a-friend-save.php', str);
+	PopupContactPOSTRequest(url+'/?tellafriend=send-mail', str);
 }

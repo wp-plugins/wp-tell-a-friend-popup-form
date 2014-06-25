@@ -3,7 +3,7 @@
 Plugin Name: wp tell a friend popup form
 Description: This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page.
 Author: Gopi Ramasamy
-Version: 5.2
+Version: 5.3
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Donate link: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
@@ -39,7 +39,7 @@ function TellAFriend()
 			<textarea name="TellAFriend_message" class="TellAFriend_TextArea" rows="3" id="TellAFriend_message"></textarea>
 		  </div>
 		  <div id="TellAFriend_BoxLabel">
-			<input type="button" name="button" class="TellAFriend_Button" value="Submit" onClick="javascript:TellAFriend_Submit(this.parentNode,'<?php echo get_option('siteurl'); ?>/wp-content/plugins/wp-tell-a-friend-popup-form/');">
+			<input type="button" name="button" class="TellAFriend_Button" value="Submit" onClick="javascript:TellAFriend_Submit(this.parentNode,'<?php echo home_url(); ?>');">
 		  </div>
 		  <input type="hidden" name="TellAFriend_Link" id="TellAFriend_Link" value="<?php echo $TellAFriendLink; ?>"  />
 		</form>
@@ -52,13 +52,22 @@ function TellAFriend()
 function TellAFriend_install() 
 {
 	global $wpdb, $wp_version;
+	
+	$admin_email = get_option('admin_email');
+	if($admin_email == "")
+	{
+		$admin_email = "admin@tellafriend.com";
+	}
+	$url = home_url();
+	
 	add_option('TellAFriend_Title', "Tell A Friend");
-	add_option('TellAFriend_Fromemail', "noreply@yoursitename.com");
+	add_option('TellAFriend_Fromemail', $admin_email);
 	add_option('TellAFriend_On_MyEmail', "");
 	add_option('TellAFriend_On_Subject', "Link recommended by ##USERNAME##");
 	add_option('TellAFriend_Caption', "<img src='".get_option('siteurl')."/wp-content/plugins/wp-tell-a-friend-popup-form/tell-a-friend.jpg' />");
-	add_option('TellAFriend_Adminmail_Content', "Hi Admin, Someone (##USERNAME##) used our form to send link (##LINK##) to friend ##FRIENDEMAIL## with the message <br /> ##MESSAGE## ");
-	add_option('TellAFriend_Usermail_Content', "Hi, Your friend ##USERNAME## has sent you a link to web site. <br /><br /> ##LINK## <br /><br /> ##MESSAGE##");
+	add_option('TellAFriend_Adminmail_Content', "Hi Admin, Someone (##USERNAME##) used our form to send link (##LINK##) to friend ##FRIENDEMAIL## with the message \r\n\r\n ##MESSAGE## ");
+	add_option('TellAFriend_Usermail_Content', "Hi, Your friend ##USERNAME## has sent you a link to web site. \r\n\r\n ##LINK## \r\n\r\n ##MESSAGE##");
+	add_option('TellAFriend_homeurl', $url);
 }
 
 function TellAFriend_widget($args) 
@@ -110,6 +119,7 @@ function TellAFriend_admin()
 	$TellAFriend_Caption = get_option('TellAFriend_Caption');
 	$TellAFriend_Adminmail_Content = get_option('TellAFriend_Adminmail_Content');
 	$TellAFriend_Usermail_Content = get_option('TellAFriend_Usermail_Content');
+	$TellAFriend_homeurl = get_option('TellAFriend_homeurl');
 	
 	if (isset($_POST['TellAFriend_submit'])) 
 	{
@@ -120,6 +130,7 @@ function TellAFriend_admin()
 		$TellAFriend_Caption = stripslashes($_POST['TellAFriend_Caption']);
 		$TellAFriend_Adminmail_Content = stripslashes($_POST['TellAFriend_Adminmail_Content']);
 		$TellAFriend_Usermail_Content = stripslashes($_POST['TellAFriend_Usermail_Content']);
+		$TellAFriend_homeurl = stripslashes($_POST['TellAFriend_homeurl']);
 		
 		update_option('TellAFriend_Title', $TellAFriend_Title );
 		update_option('TellAFriend_Fromemail', $TellAFriend_Fromemail );
@@ -128,6 +139,7 @@ function TellAFriend_admin()
 		update_option('TellAFriend_Caption', $TellAFriend_Caption );
 		update_option('TellAFriend_Adminmail_Content', $TellAFriend_Adminmail_Content );
 		update_option('TellAFriend_Usermail_Content', $TellAFriend_Usermail_Content );
+		update_option('TellAFriend_homeurl', $TellAFriend_homeurl );
 		
 		?>
 		<div class="updated fade">
@@ -168,6 +180,12 @@ function TellAFriend_admin()
       </tr>
       <tr><td colspan="2"><p>Keywords: ##USERNAME## , ##LINK## , ##FRIENDEMAIL## , ##MESSAGE##</p></td></tr>
     </table>
+	
+	<h3><?php _e('Security Check (Spam Stopper)', 'tell-a-friend'); ?></h3>
+	<label for="tag-width"><?php _e('Home URL', 'tell-a-friend'); ?></label>
+	<input name="TellAFriend_homeurl" type="text" value="<?php echo $TellAFriend_homeurl; ?>"  id="TellAFriend_homeurl" size="50" maxlength="500">
+	<p><?php _e	('This home URL is for security check. We can submit the form only on this website. ', 'tell-a-friend'); ?></p>
+	
 	<div style="height:8px;"></div>
 	<input type="submit" id="TellAFriend_submit" name="TellAFriend_submit" lang="publish" class="button add-new-h2" value="<?php _e('Update Setting', 'tell-a-friend'); ?>" />
 	<input name="Help" lang="publish" class="button add-new-h2" onclick="window.open('http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/');" value="<?php _e('Help', 'tell-a-friend'); ?>" type="button" />
@@ -222,7 +240,7 @@ function TellAFriend_shortcode( $atts )
 	
 	$TellAFriend_Caption = get_option('TellAFriend_Caption');
 	$PopupContact_title = $title;
-	$siteurl = "'".get_option('siteurl') . "/wp-content/plugins/wp-tell-a-friend-popup-form/'";
+	$siteurl = "'" . home_url() . "'";
 	$close = "javascript:TellAFriend_HideForm('TellAFriend_BoxContainer','TellAFriend_BoxContainerFooter');";
 	$open = 'javascript:TellAFriend_OpenForm("TellAFriend_BoxContainer","TellAFriend_BoxContainerBody","TellAFriend_BoxContainerFooter");';
 	
@@ -263,6 +281,105 @@ function TellAFriend_textdomain()
 	  load_plugin_textdomain( 'tell-a-friend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
+function TellAFriend_plugin_query_vars($vars) 
+{
+	$vars[] = 'tellafriend';
+	return $vars;
+}
+
+function TellAFriend_plugin_parse_request($qstring)
+{
+	if (array_key_exists('tellafriend', $qstring->query_vars)) 
+	{
+		$page = $qstring->query_vars['tellafriend'];
+		switch($page)
+		{
+			case 'send-mail':
+				$ToEmail = isset($_POST['TellAFriend_email']) ? $_POST['TellAFriend_email'] : '';
+				if($ToEmail <> "")
+				{
+					if (!filter_var($ToEmail, FILTER_VALIDATE_EMAIL))
+					{
+						echo "invalid-email";
+					}
+					else
+					{
+						$homeurl = get_option('TellAFriend_homeurl');
+						if($homeurl == "")
+						{
+							$homeurl = home_url();
+						}
+						
+						$samedomain = strpos($_SERVER['HTTP_REFERER'], $homeurl);
+						if ( ($samedomain !== false) && ($samedomain < 5) ) 
+						{
+							$SenderName = isset($_POST['TellAFriend_name']) ? $_POST['TellAFriend_name'] : '';
+							$ToEmail = isset($_POST['TellAFriend_email']) ? $_POST['TellAFriend_email'] : '';
+
+							$Link = $_POST['TellAFriend_Link'];
+							$ToMessage = stripslashes($_POST['TellAFriend_message']);
+							$FromEmail = get_option('TellAFriend_Fromemail');
+							$AdminEmail = get_option('TellAFriend_On_MyEmail');
+							$Subject = stripslashes(get_option('TellAFriend_On_Subject'));
+							$Adminmail_Content = stripslashes(get_option('TellAFriend_Adminmail_Content'));
+							$Usermail_Content = stripslashes(get_option('TellAFriend_Usermail_Content'));
+							
+							$headers  = "From: \"" . $FromEmail . "\" <$FromEmail>\n";
+							$headers .= "Return-Path: <" . $FromEmail . ">\n";
+							$headers .= "Reply-To: \"" . $FromEmail . "\" <" . $FromEmail . ">\n";
+							$headers .= "X-Mailer: PHP" . phpversion() . "\n";
+							$headers .= "MIME-Version: 1.0\n";
+							$headers .= "Content-Type: " . get_bloginfo('html_type') . "; charset=\"". get_bloginfo('charset') . "\"\n";
+							$headers .= "Content-type: text/html\r\n";
+							
+							$Adminmail_Content = str_replace("&", "and", $Adminmail_Content);
+							$Adminmail_Content = str_replace("##USERNAME##" , $SenderName , $Adminmail_Content);
+							$Adminmail_Content = str_replace("##FRIENDEMAIL##" , $ToEmail , $Adminmail_Content);
+							$Adminmail_Content = str_replace("##MESSAGE##" , $ToMessage , $Adminmail_Content);
+							$Adminmail_Content = str_replace("##LINK##" , $Link , $Adminmail_Content);
+							$Adminmail_Content = str_replace("\r\n", "<br />", $Adminmail_Content);
+							$Adminmail_Content = str_replace("\n", "<br />", $Adminmail_Content);
+							$Adminmail_Content = nl2br($Adminmail_Content);
+							
+							$Usermail_Content = str_replace("&", "and", $Usermail_Content);
+							$Usermail_Content = str_replace("##USERNAME##" , $SenderName , $Usermail_Content);
+							$Usermail_Content = str_replace("##FRIENDEMAIL##" , $ToEmail , $Usermail_Content);
+							$Usermail_Content = str_replace("##MESSAGE##" , $ToMessage , $Usermail_Content);
+							$Usermail_Content = str_replace("##LINK##" , $Link , $Usermail_Content);
+							$Usermail_Content = str_replace("\r\n", "<br />", $Usermail_Content);
+							$Usermail_Content = str_replace("\n", "<br />", $Usermail_Content);
+							$Usermail_Content = nl2br($Usermail_Content);
+							
+							$Subject = str_replace("##USERNAME##" , $SenderName , $Subject);
+							$Subject = str_replace("##FRIENDEMAIL##" , $ToEmail , $Subject);
+							$Subject = str_replace("##LINK##" , $Link , $Subject);
+							
+							@wp_mail($ToEmail, $Subject, $Usermail_Content, $headers);
+							if($AdminEmail <> "")
+							{
+								@wp_mail($AdminEmail, $Subject, $Adminmail_Content, $headers);
+							}
+							echo "mail-sent-successfully";
+						}
+						else
+						{
+							echo "there-was-problem";
+						}
+					}
+				}
+				else
+				{
+					echo "empty-email";
+				}
+				die();
+				break;	
+		}
+	}
+}
+		
+
+add_action('parse_request', 'TellAFriend_plugin_parse_request');
+add_filter('query_vars', 'TellAFriend_plugin_query_vars');
 add_action('plugins_loaded', 'TellAFriend_textdomain');
 add_shortcode( 'tell-a-friend', 'TellAFriend_shortcode' );
 add_action('wp_enqueue_scripts', 'TellAFriend_add_javascript_files');

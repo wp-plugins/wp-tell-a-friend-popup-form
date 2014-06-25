@@ -137,14 +137,13 @@
 }
 .TellAFriend_TextBox 
 {
-	width:160px;
-	color:#000000;
+	color:#000000 !important;
 }
 .TellAFriend_TextArea 
 {
 	width:270px;
 	height:90px;
-	color:#000000;
+	color:#000000 !important;
 }
 .TellAFriend_Button 
 {
