@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-f
 Plugin URI: http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/
 Tags: popup, contact, popup form, tell a friend
 Requires at least: 3.4
-Tested up to: 3.9.1
-Stable tag: 5.3
+Tested up to: 4.0
+Stable tag: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,9 @@ This will create Tell A Friend form to the user to share the link to their frien
 
 Check official website for live demo [http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)
 
-* Live Demo : [Live Demo](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)	
-* More Information : [More Information](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)				
-* Plugin URI : [Plugin URI](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)		
+* [Live Demo](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)	
+* [More Information](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)				
+* [Contact](http://www.gopiplus.com/work/2012/05/21/wordpress-plugin-wp-tell-a-friend-popup-form/)		
 
 This will create the popup form to the user to share the website link to their friend. The concept of this plug-in is to open the Tell a Friend form in the popup window by clicking the button from the page (Sidebar, End of the post, pages). Plug-in automatically pick the post link and send it to their friend as well as website admin (Optional) along with the entered message.
 
@@ -69,65 +69,91 @@ This will create the popup form to the user to share the website link to their f
 == Changelog ==
 
 = 1.0 =
+
 First version
 
 = 2.0 =
+
 JavaScript loaded by using the wp_enqueue_scripts hook (instead of the init hook)
 Short code option for pages and posts
 
 = 3.0 =
+
 New demo link
 
 = 4.0 =
+
 Tested up to 3.4.2 
 
 = 4.1 =
+
 Tested up to 3.5
 
 = 5.0 =
+
 Tested up to 3.6
 Added few security features.
 
 = 5.1 =
+
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (tell-a-friend.po) available in the languages folder.
 
 = 5.2 =
+
 1. Tested up to 3.9
 
 = 5.3 =
+
 1. Captcha removed from the plugin. Instead security check has been added in Tell A Friend form submit page. With this new option Tell A Friend form accept submission only from your website domain. It simply reject the submission other then your website domain. After plugin upgrade, Please deactivate and activate the plugin once.
+
+= 5.4 =
+
+1. Tested up to 4.0
 
 == Upgrade Notice ==
 
 = 1.0 =
+
 First version
 
 = 2.0 =
+
 JavaScript loaded by using the wp_enqueue_scripts hook (instead of the init hook)
 Short code option for pages and posts
 
 = 3.0 =
+
 New demo link
 
 = 4.0 =
-Tested up to 3.4.2
+
+Tested up to 3.4.2 
 
 = 4.1 =
+
 Tested up to 3.5
 
 = 5.0 =
+
 Tested up to 3.6
 Added few security features.
 
 = 5.1 =
+
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (tell-a-friend.po) available in the languages folder.
 
 = 5.2 =
+
 1. Tested up to 3.9
 
 = 5.3 =
+
 1. Captcha removed from the plugin. Instead security check has been added in Tell A Friend form submit page. With this new option Tell A Friend form accept submission only from your website domain. It simply reject the submission other then your website domain. After plugin upgrade, Please deactivate and activate the plugin once.
+
+= 5.4 =
+
+1. Tested up to 4.0
